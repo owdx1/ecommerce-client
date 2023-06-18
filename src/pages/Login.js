@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginSuccess, setLoginSuccess] = useState(false);
@@ -24,7 +24,7 @@ export default function Login() {
                 const { token } = await response.json();
                 localStorage.setItem('token', token);
                 setLoginSuccess(true);
-                navigate('/shop'); // Redirects to the shop page on successful login
+                //navigate('/'); 
             } else {
                 throw new Error(`HTTP error, status = ${response.status}`);
             }
@@ -35,7 +35,7 @@ export default function Login() {
 
     return (
         <div className="login-container">
-            <h1>Login Page</h1>
+            
             <div className="form-group">
                 <label>Email:</label>
                 <input
@@ -57,11 +57,11 @@ export default function Login() {
             <button className="login-button" onClick={handleLogin}>
                 Log In
             </button>
-            {error && <p>{error}</p>} {/* Displays the error message */}
+            {error && <p>{error}</p>} 
             <div className="registerNow">
-                <p className="registerText">New here? Register now</p>
+            
                 <NavLink to="/register">
-                    <button className="registerButton">Register</button>
+                    <button className="registerButton">New here? Register now </button>
                 </NavLink>
             </div>
             {loginSuccess && <NavLink to="/shop" />}

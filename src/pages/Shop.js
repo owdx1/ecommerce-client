@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../styles/Shop.css'
 import dummyImage from '../images/dummy.jpg';
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -29,12 +30,14 @@ export default function Home() {
   return (
     <div className="product-list">
       {data.map((item, index) => (
-        <div key={index} className="product-item">
-          <img src={dummyImage} alt="product" className="product-image"/>
-          <h2>{item.product_name}</h2>
-          <p>{item.product_price}</p>
-          <p>{item.product_size}</p>
-        </div>
+        <NavLink key={index} to={`/shop/${item.product_id}`}>
+          <div key={index} className="product-item">
+            <img src={dummyImage} alt="product" className="product-image"/>
+            <h2>{item.product_name}</h2>
+            <p>{item.product_price}</p>
+            <p>{item.product_size}</p>
+          </div>
+        </NavLink>
       ))}
     </div>
   );
